@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CollectionViewItemsSpacing.MainPage">
+
+    <Grid RowDefinitions="*, Auto, 150, *, Auto, 150, *">
+
+        
+        
+        <Label Grid.Row="1"
+               Text="Works perfectly on Android and iOS" />
+
+        <CollectionView Grid.Row="2"
+                        ItemsLayout="HorizontalList"
+                        ItemsSource="{Binding Items}">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Image HeightRequest="150"
+                           WidthRequest="100"
+                           Source="{Binding}" />
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        
+        
+        
+        <Label Grid.Row="4"
+               Text="Broken on iOS when setting ItemSpacing > 0 (Won't scroll to end)" />
+
+        <CollectionView Grid.Row="5"
+                        ItemsSource="{Binding Items}">
+
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Horizontal"
+                                   ItemSpacing="16" />
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Image HeightRequest="150"
+                           WidthRequest="100"
+                           Source="{Binding}" />
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+
+
+</ContentPage>
